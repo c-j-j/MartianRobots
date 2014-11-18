@@ -9,7 +9,7 @@ import java.util.List;
 public class Robot {
     private int xCoordinate;
     private int yCoordinate;
-    private final Orientation orientation;
+    private Orientation orientation;
     private Position currentPosition;
 
     public Robot(int initialXCoordinate, int initialYCoordinate, Orientation orientation) {
@@ -52,5 +52,13 @@ public class Robot {
 
     public Orientation getOrientation() {
         return orientation;
+    }
+
+    public void setOrientation(Orientation orientation) {
+        this.orientation = orientation;
+    }
+
+    public void updatePosition(Position newPosition) {
+
     }
 }
