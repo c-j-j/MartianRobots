@@ -6,20 +6,21 @@ import data.Position;
 
 import java.util.List;
 
-public class Robot {
-    private int xCoordinate;
-    private int yCoordinate;
-    private Orientation orientation;
+public class Robot
+{
+    private Orientation currentOrientation;
     private Position currentPosition;
 
-    public Robot(int initialXCoordinate, int initialYCoordinate, Orientation orientation) {
-        xCoordinate = initialXCoordinate;
-        yCoordinate = initialYCoordinate;
-        this.orientation = orientation;
+    public Robot(Position initialPosition, Orientation initialOrientation)
+    {
+        currentPosition = initialPosition;
+        currentOrientation = initialOrientation;
     }
 
-    public void executeInstructions(Grid grid, List<Instruction> instructions) {
-        for (Instruction instruction : instructions) {
+    public void executeInstructions(Grid grid, List<Instruction> instructions)
+    {
+        for (Instruction instruction : instructions)
+        {
 
             //check if robot is lost, i.e. grid.isRobotLost(this)
             //check if previous robot has left "scent", i.e. grid has a record of robot being lsot
@@ -30,35 +31,23 @@ public class Robot {
         }
     }
 
-    public Position getCurrentPosition() {
+    public Position getCurrentPosition()
+    {
         return currentPosition;
     }
 
-    public int getxCoordinate() {
-        return xCoordinate;
+    public Orientation getCurrentOrientation()
+    {
+        return currentOrientation;
     }
 
-    public void setxCoordinate(int xCoordinate) {
-        this.xCoordinate = xCoordinate;
+    public void updateOrientation(Orientation orientation)
+    {
+        this.currentOrientation = orientation;
     }
 
-    public int getyCoordinate() {
-        return yCoordinate;
-    }
-
-    public void setyCoordinate(int yCoordinate) {
-        this.yCoordinate = yCoordinate;
-    }
-
-    public Orientation getOrientation() {
-        return orientation;
-    }
-
-    public void setOrientation(Orientation orientation) {
-        this.orientation = orientation;
-    }
-
-    public void updatePosition(Position newPosition) {
-
+    public void updatePosition(Position newPosition)
+    {
+        currentPosition = newPosition;
     }
 }
