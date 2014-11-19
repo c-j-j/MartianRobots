@@ -1,6 +1,7 @@
 package instruction;
 
 import data.Position;
+import robot.Robot;
 
 public enum Instruction
 {

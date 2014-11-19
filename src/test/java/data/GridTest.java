@@ -1,3 +1,5 @@
+package data;
+
 import data.Grid;
 import data.Position;
 import instruction.Instruction;

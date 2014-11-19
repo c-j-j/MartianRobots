@@ -1,8 +1,10 @@
-package instruction;
+package robot;
 
 
 import data.Grid;
 import data.Position;
+import instruction.Instruction;
+import instruction.Orientation;
 
 import java.util.List;
 

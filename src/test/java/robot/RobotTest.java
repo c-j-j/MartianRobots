@@ -1,8 +1,9 @@
+package robot;
+
 import data.Grid;
 import data.Position;
 import instruction.Instruction;
 import instruction.Orientation;
-import instruction.Robot;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Before;

@@ -4,6 +4,7 @@ import data.Position;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
+import robot.Robot;
 
 public class TurnRightInstructionTest
 {
