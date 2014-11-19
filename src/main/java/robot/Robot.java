@@ -13,6 +13,7 @@ public class Robot
     private Orientation currentOrientation;
     private Position currentPosition;
     private boolean isLost = false;
+    private Position previousPosition;
 
     public Robot(Position initialPosition, Orientation initialOrientation)
     {
@@ -38,6 +39,7 @@ public class Robot
     {
         if (!grid.willNextMoveLoseRobot(currentPosition, currentOrientation, instruction))
         {
+            previousPosition = currentPosition;
             instruction.execute(this);
             updateRobotLostStatus(grid);
         }
@@ -79,5 +81,10 @@ public class Robot
     public boolean isLost()
     {
         return isLost;
+    }
+
+    public Position getPreviousPosition()
+    {
+        return previousPosition;
     }
 }

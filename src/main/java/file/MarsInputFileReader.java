@@ -65,7 +65,6 @@ public class MarsInputFileReader
     {
         String[] tokens = line.split(" ");
         marsInputBuilder
-                .withUpperXCoordinate(Integer.valueOf(tokens[0]))
-                .withUpperYCoordinate(Integer.valueOf(tokens[1]));
+                .withGridSize(Integer.valueOf(tokens[0]), Integer.valueOf(tokens[1]));
     }
 }

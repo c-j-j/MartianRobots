@@ -14,21 +14,16 @@ public class MarsInputBuilder
     private int upperYCoordinate;
     private List<RobotAction> robotActions = new ArrayList<>();
 
-    public MarsInputBuilder withUpperXCoordinate(int upperXCoordinate)
-    {
-        this.upperXCoordinate = upperXCoordinate;
-        return this;
-    }
-
-    public MarsInputBuilder withUpperYCoordinate(int upperYCoordinate)
-    {
-        this.upperYCoordinate = upperYCoordinate;
-        return this;
-    }
-
     public MarsInputBuilder withRobotAndInstructions(Robot robot, List<Instruction> instructions)
     {
         robotActions.add(new RobotAction(robot, instructions));
+        return this;
+    }
+
+    public MarsInputBuilder withGridSize(Integer upperXCoordinate, Integer upperYCoordinate)
+    {
+        this.upperXCoordinate = upperXCoordinate;
+        this.upperYCoordinate = upperYCoordinate;
         return this;
     }
 

@@ -64,6 +64,17 @@ public class RobotTest
     }
 
     @Test
+    public void robotShouldReturnLastKnownPositionPriorToBeingLost() throws Exception
+    {
+        Position initialPosition = new Position(UPPER_X_COORDINATE, UPPER_Y_COORDINATE);
+        Robot robot = new Robot(initialPosition, Orientation.N);
+        instructions.add(FORWARD_INSTRUCTION);
+
+        robot.executeInstructions(grid, instructions);
+        Assert.assertThat(robot.getPreviousPosition(), Matchers.is(initialPosition));
+    }
+
+    @Test
     public void robotShouldNotLoseItselfIfPreviousRobotHasLostItselfOnAParticularPosition() throws Exception
     {
         Position position = new Position(UPPER_X_COORDINATE, UPPER_Y_COORDINATE);
