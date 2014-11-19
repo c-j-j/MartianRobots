@@ -7,18 +7,18 @@ public class TurnUtils
 {
     private static final Map<Orientation, Orientation> turnRightMoves = new HashMap<Orientation, Orientation>()
     {{
-            put(Orientation.NORTH, Orientation.EAST);
-            put(Orientation.EAST, Orientation.SOUTH);
-            put(Orientation.SOUTH, Orientation.WEST);
-            put(Orientation.WEST, Orientation.NORTH);
+            put(Orientation.N, Orientation.E);
+            put(Orientation.E, Orientation.S);
+            put(Orientation.S, Orientation.W);
+            put(Orientation.W, Orientation.N);
         }};
 
     private static final Map<Orientation, Orientation> turnLeftMoves = new HashMap<Orientation, Orientation>()
     {{
-            put(Orientation.NORTH, Orientation.WEST);
-            put(Orientation.WEST, Orientation.SOUTH);
-            put(Orientation.SOUTH, Orientation.EAST);
-            put(Orientation.EAST, Orientation.NORTH);
+            put(Orientation.N, Orientation.W);
+            put(Orientation.W, Orientation.S);
+            put(Orientation.S, Orientation.E);
+            put(Orientation.E, Orientation.N);
         }};
 
 

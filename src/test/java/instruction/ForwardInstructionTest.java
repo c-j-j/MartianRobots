@@ -15,9 +15,9 @@ public class ForwardInstructionTest
     public void shouldUpdateRobotsPositionByGoingForward() throws Exception
     {
         Position initialPosition = new Position(X, Y);
-        Orientation orientation = Orientation.NORTH;
+        Orientation orientation = Orientation.N;
         Robot robot = new Robot(initialPosition, orientation);
-        Instruction.FORWARD.execute(robot);
+        Instruction.F.execute(robot);
 
         Assert.assertThat(robot.getCurrentPosition(), Matchers.is(orientation.calculateNextForwardPosition(initialPosition)));
     }

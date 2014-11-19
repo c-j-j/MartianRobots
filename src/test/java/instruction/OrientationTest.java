@@ -12,7 +12,7 @@ public class OrientationTest
     {
         int y = 1;
         int x = 0;
-        Position nextForwardPosition = Orientation.NORTH.calculateNextForwardPosition(new Position(x, y));
+        Position nextForwardPosition = Orientation.N.calculateNextForwardPosition(new Position(x, y));
 
         Assert.assertThat(nextForwardPosition.getX(), Matchers.is(x));
         Assert.assertThat(nextForwardPosition.getY(), Matchers.is(++y));
@@ -23,7 +23,7 @@ public class OrientationTest
     {
         int y = 1;
         int x = 2;
-        Position nextForwardPosition = Orientation.SOUTH.calculateNextForwardPosition(new Position(x, y));
+        Position nextForwardPosition = Orientation.S.calculateNextForwardPosition(new Position(x, y));
 
         Assert.assertThat(nextForwardPosition.getX(), Matchers.is(x));
         Assert.assertThat(nextForwardPosition.getY(), Matchers.is(--y));
@@ -34,7 +34,7 @@ public class OrientationTest
     {
         int y = 1;
         int x = 0;
-        Position nextForwardPosition = Orientation.EAST.calculateNextForwardPosition(new Position(x, y));
+        Position nextForwardPosition = Orientation.E.calculateNextForwardPosition(new Position(x, y));
 
         Assert.assertThat(nextForwardPosition.getX(), Matchers.is(++x));
         Assert.assertThat(nextForwardPosition.getY(), Matchers.is(y));
@@ -45,7 +45,7 @@ public class OrientationTest
     {
         int y = 1;
         int x = 3;
-        Position nextForwardPosition = Orientation.WEST.calculateNextForwardPosition(new Position(x, y));
+        Position nextForwardPosition = Orientation.W.calculateNextForwardPosition(new Position(x, y));
 
         Assert.assertThat(nextForwardPosition.getX(), Matchers.is(--x));
         Assert.assertThat(nextForwardPosition.getY(), Matchers.is(y));

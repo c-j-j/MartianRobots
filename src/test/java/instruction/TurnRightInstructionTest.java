@@ -16,9 +16,9 @@ public class TurnRightInstructionTest
     public void shouldUpdateRobotOrientationWhenTurningRight() throws Exception
     {
         Position initialPosition = new Position(X, Y);
-        Orientation initialOrientation = Orientation.NORTH;
+        Orientation initialOrientation = Orientation.N;
         Robot robot = new Robot(initialPosition, initialOrientation);
-        Instruction.RIGHT.execute(robot);
+        Instruction.R.execute(robot);
 
         Assert.assertThat(robot.getCurrentOrientation(), Matchers.is(TurnUtils.calculateNextRightOrientation(initialOrientation)));
     }

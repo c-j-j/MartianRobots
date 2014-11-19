@@ -4,7 +4,7 @@ import data.Position;
 
 public enum Orientation
 {
-    NORTH
+    N
             {
                 @Override
                 public Position calculateNextForwardPosition(Position currentPosition)
@@ -14,7 +14,7 @@ public enum Orientation
                     return new Position(currentPosition.getX(), newYCoordinate);
                 }
             },
-    EAST
+    E
             {
                 @Override
                 public Position calculateNextForwardPosition(Position currentPosition)
@@ -23,7 +23,7 @@ public enum Orientation
                     return new Position(newXCoordinate, currentPosition.getY());
                 }
             },
-    SOUTH
+    S
             {
                 @Override
                 public Position calculateNextForwardPosition(Position currentPosition)
@@ -32,7 +32,7 @@ public enum Orientation
                     return new Position(currentPosition.getX(), newYCoordinate);
                 }
             },
-    WEST
+    W
             {
                 @Override
                 public Position calculateNextForwardPosition(Position currentPosition)

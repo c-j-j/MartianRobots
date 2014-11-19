@@ -5,7 +5,7 @@ import robot.Robot;
 
 public enum Instruction
 {
-    FORWARD
+    F
             {
                 @Override
                 public void execute(Robot robot)
@@ -14,7 +14,7 @@ public enum Instruction
                     robot.updatePosition(newPosition);
                 }
             },
-    RIGHT
+    R
             {
                 @Override
                 public void execute(Robot robot)
@@ -23,7 +23,7 @@ public enum Instruction
                     robot.updateOrientation(newOrientation);
                 }
             },
-    LEFT
+    L
             {
                 @Override
                 public void execute(Robot robot)
