@@ -18,9 +18,9 @@ public class Robot
         currentOrientation = initialOrientation;
     }
 
-    public void executeInstructions(Grid grid, List<Instruction> instructions)
+    public void executeInstructions(Grid grid, List<InstructionSet> instructions)
     {
-        for (Instruction instruction : instructions)
+        for (InstructionSet instruction : instructions)
         {
             if (isLost)
             {

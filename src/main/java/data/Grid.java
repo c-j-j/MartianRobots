@@ -1,5 +1,8 @@
 package data;
 
+import instruction.InstructionSet;
+import instruction.Orientation;
+
 public class Grid
 {
     public static final int ZERO_COORDINATE = 0;
@@ -27,5 +30,10 @@ public class Grid
         {
             return true;
         }
+    }
+
+    public void registerLostMove(Position position, Orientation orientation, InstructionSet instruction)
+    {
+        //todo
     }
 }

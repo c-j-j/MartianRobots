@@ -1,5 +1,7 @@
 import data.Grid;
 import data.Position;
+import instruction.InstructionSet;
+import instruction.Orientation;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Before;
@@ -56,5 +58,11 @@ public class GridTest
     {
         int y = Grid.ZERO_COORDINATE - 1;
         Assert.assertThat(grid.isPositionOnGrid(new Position(UPPER_X_COORDINATE, y)), Matchers.is(false));
+    }
+
+    @Test
+    public void shouldRegisterAPositionAndInstructionThatWillPreventNextRobotBeingLost() throws Exception
+    {
+        grid.registerLostMove(new Position(UPPER_X_COORDINATE,UPPER_Y_COORDINATE), Orientation.NORTH, InstructionSet.FORWARD);
     }
 }

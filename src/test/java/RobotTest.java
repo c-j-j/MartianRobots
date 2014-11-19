@@ -1,7 +1,6 @@
 import data.Grid;
 import data.Position;
-import instruction.ForwardInstruction;
-import instruction.Instruction;
+import instruction.InstructionSet;
 import instruction.Orientation;
 import instruction.Robot;
 import org.hamcrest.Matchers;
@@ -17,8 +16,9 @@ public class RobotTest
 
     public static final int UPPER_X_COORDINATE = 3;
     public static final int UPPER_Y_COORDINATE = 4;
+    public static final InstructionSet FORWARD_INSTRUCTION = InstructionSet.FORWARD;
     private Grid grid;
-    private List<Instruction> instructions;
+    private List<InstructionSet> instructions;
 
     @Before
     public void setUp() throws Exception
@@ -30,7 +30,7 @@ public class RobotTest
     @Test
     public void shouldExecuteInstructionWhenRobotNotCurrentlyLost() throws Exception
     {
-        instructions.add(new ForwardInstruction());
+        instructions.add(FORWARD_INSTRUCTION);
         int x = 1;
         int y = 2;
         Position initialPosition = new Position(x, y);
@@ -44,7 +44,7 @@ public class RobotTest
     @Test
     public void robotShouldNotBeLostIfStillOnGrid() throws Exception
     {
-        instructions.add(new ForwardInstruction());
+        instructions.add(FORWARD_INSTRUCTION);
         Robot robot = new Robot(new Position(Grid.ZERO_COORDINATE, Grid.ZERO_COORDINATE), Orientation.NORTH);
         robot.executeInstructions(grid, instructions);
 
@@ -56,7 +56,7 @@ public class RobotTest
     {
         Position initialPosition = new Position(UPPER_X_COORDINATE, UPPER_Y_COORDINATE);
         Robot robot = new Robot(initialPosition, Orientation.NORTH);
-        instructions.add(new ForwardInstruction());
+        instructions.add(FORWARD_INSTRUCTION);
 
         robot.executeInstructions(grid, instructions);
         Assert.assertThat(robot.isLost(), Matchers.is(true));
