@@ -1,6 +1,6 @@
 package data;
 
-import instruction.InstructionSet;
+import instruction.Instruction;
 import instruction.Orientation;
 
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ public class Grid
         }
     }
 
-    public void registerLostMove(Position lastKnownPosition, Orientation orientation, InstructionSet instruction)
+    public void registerLostMove(Position lastKnownPosition, Orientation orientation, Instruction instruction)
     {
         lostMoves.add(new LostMove(lastKnownPosition, orientation, instruction));
     }
@@ -47,7 +47,7 @@ public class Grid
         return lostMoves;
     }
 
-    public boolean willNextMoveLoseRobot(Position currentPosition, Orientation currentOrientation, InstructionSet nextInstruction)
+    public boolean willNextMoveLoseRobot(Position currentPosition, Orientation currentOrientation, Instruction nextInstruction)
     {
         return lostMoves.contains(new LostMove(currentPosition, currentOrientation, nextInstruction));
     }
@@ -56,9 +56,9 @@ public class Grid
 
         private final Position position;
         private final Orientation orientation;
-        private final InstructionSet instruction;
+        private final Instruction instruction;
 
-        public LostMove(Position position, Orientation orientation, InstructionSet instruction)
+        public LostMove(Position position, Orientation orientation, Instruction instruction)
         {
             this.position = position;
             this.orientation = orientation;
@@ -75,7 +75,7 @@ public class Grid
             return orientation;
         }
 
-        public InstructionSet getInstruction()
+        public Instruction getInstruction()
         {
             return instruction;
         }

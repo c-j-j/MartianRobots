@@ -2,7 +2,7 @@ package instruction;
 
 import data.Position;
 
-public enum InstructionSet
+public enum Instruction
 {
     FORWARD
             {

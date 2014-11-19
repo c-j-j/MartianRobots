@@ -1,6 +1,6 @@
 import data.Grid;
 import data.Position;
-import instruction.InstructionSet;
+import instruction.Instruction;
 import instruction.Orientation;
 import instruction.Robot;
 import org.hamcrest.Matchers;
@@ -16,9 +16,9 @@ public class RobotTest
 
     public static final int UPPER_X_COORDINATE = 3;
     public static final int UPPER_Y_COORDINATE = 4;
-    public static final InstructionSet FORWARD_INSTRUCTION = InstructionSet.FORWARD;
+    public static final Instruction FORWARD_INSTRUCTION = Instruction.FORWARD;
     private Grid grid;
-    private List<InstructionSet> instructions;
+    private List<Instruction> instructions;
 
     @Before
     public void setUp() throws Exception

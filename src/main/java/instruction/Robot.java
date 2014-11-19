@@ -18,9 +18,9 @@ public class Robot
         currentOrientation = initialOrientation;
     }
 
-    public void executeInstructions(Grid grid, List<InstructionSet> instructions)
+    public void executeInstructions(Grid grid, List<Instruction> instructions)
     {
-        for (InstructionSet instruction : instructions)
+        for (Instruction instruction : instructions)
         {
             if (isLost)
             {
@@ -32,7 +32,7 @@ public class Robot
         }
     }
 
-    private void processInstruction(Grid grid, InstructionSet instruction)
+    private void processInstruction(Grid grid, Instruction instruction)
     {
         if (!grid.willNextMoveLoseRobot(currentPosition, currentOrientation, instruction))
         {

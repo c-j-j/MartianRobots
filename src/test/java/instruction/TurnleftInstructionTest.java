@@ -16,7 +16,7 @@ public class TurnleftInstructionTest
         Position initialPosition = new Position(X, Y);
         Orientation initialOrientation = Orientation.NORTH;
         Robot robot = new Robot(initialPosition, initialOrientation);
-        InstructionSet.LEFT.execute(robot);
+        Instruction.LEFT.execute(robot);
 
         Assert.assertThat(robot.getCurrentOrientation(), Matchers.is(TurnUtils.calculateNextLeftOrientation(initialOrientation)));
     }

@@ -1,6 +1,6 @@
 import data.Grid;
 import data.Position;
-import instruction.InstructionSet;
+import instruction.Instruction;
 import instruction.Orientation;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
@@ -66,7 +66,7 @@ public class GridTest
     public void shouldRegisterAPositionAndInstructionThatWillPreventNextRobotBeingLost() throws Exception
     {
         Position lastKnownPosition = new Position(UPPER_X_COORDINATE, UPPER_Y_COORDINATE);
-        InstructionSet forward = InstructionSet.FORWARD;
+        Instruction forward = Instruction.FORWARD;
         Orientation north = Orientation.NORTH;
         grid.registerLostMove(lastKnownPosition, north, forward);
         List<Grid.LostMove> lostMoves = grid.getLostMoves();
@@ -83,7 +83,7 @@ public class GridTest
     public void shouldReturnTrueWhenNextMoveHasLostAPreviousRobot() throws Exception
     {
         Position lastKnownPosition = new Position(UPPER_X_COORDINATE, UPPER_Y_COORDINATE);
-        InstructionSet forward = InstructionSet.FORWARD;
+        Instruction forward = Instruction.FORWARD;
         Orientation north = Orientation.NORTH;
         grid.registerLostMove(lastKnownPosition, north, forward);
 
@@ -94,7 +94,7 @@ public class GridTest
     public void shouldReturnFalseWhenNextMoveHasNotLostAPreviousRobot() throws Exception
     {
         Position lastKnownPosition = new Position(UPPER_X_COORDINATE, UPPER_Y_COORDINATE);
-        InstructionSet forward = InstructionSet.FORWARD;
+        Instruction forward = Instruction.FORWARD;
         Orientation north = Orientation.NORTH;
         grid.registerLostMove(lastKnownPosition, north, forward);
 

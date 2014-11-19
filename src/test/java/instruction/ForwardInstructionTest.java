@@ -16,7 +16,7 @@ public class ForwardInstructionTest
         Position initialPosition = new Position(X, Y);
         Orientation orientation = Orientation.NORTH;
         Robot robot = new Robot(initialPosition, orientation);
-        InstructionSet.FORWARD.execute(robot);
+        Instruction.FORWARD.execute(robot);
 
         Assert.assertThat(robot.getCurrentPosition(), Matchers.is(orientation.calculateNextForwardPosition(initialPosition)));
     }
