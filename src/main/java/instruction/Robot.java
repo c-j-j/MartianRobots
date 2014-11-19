@@ -21,14 +21,20 @@ public class Robot
     {
         for (Instruction instruction : instructions)
         {
-
+            if(!isRobotLost(grid)){
+                instruction.execute(this);
+            }
             //check if robot is lost, i.e. grid.isRobotLost(this)
             //check if previous robot has left "scent", i.e. grid has a record of robot being lsot
             //grid.isInstructionGoingToLoseRobot(this)
             //execute command
 
-            instruction.execute(this);
         }
+    }
+
+    private boolean isRobotLost(Grid grid)
+    {
+        return !grid.isPositionOnGrid(currentPosition);
     }
 
     public Position getCurrentPosition()

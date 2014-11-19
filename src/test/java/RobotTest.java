@@ -1,6 +1,9 @@
 import data.Grid;
 import data.Position;
-import instruction.*;
+import instruction.ForwardInstruction;
+import instruction.Instruction;
+import instruction.Orientation;
+import instruction.Robot;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
@@ -11,19 +14,19 @@ import java.util.List;
 public class RobotTest
 {
     @Test
-    public void testRobotInstruction() throws Exception
+    public void shouldExecuteInstructionWhenRobotNotCurrentlyLost() throws Exception
     {
         Grid grid = new Grid(3, 4);
-        List<Instruction> instructions = new ArrayList<Instruction>();
+        List<Instruction> instructions = new ArrayList<>();
         instructions.add(new ForwardInstruction());
-        instructions.add(new TurnRightInstruction());
-        Robot robot = null;
+        int x = 1;
+        int y = 2;
+        Position initialPosition = new Position(x, y);
+        Orientation initialOrientation = Orientation.NORTH;
+        Robot robot = new Robot(initialPosition, initialOrientation);
         robot.executeInstructions(grid, instructions);
 
-        Position position = robot.getCurrentPosition();
-
-        Assert.assertThat(position.getX(), Matchers.is(1));
-        Assert.assertThat(position.getY(), Matchers.is(2));
+        Assert.assertThat(robot.getCurrentPosition(), Matchers.is(initialOrientation.calculateNextForwardPosition(initialPosition)));
     }
 }
 

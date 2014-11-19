@@ -1,19 +1,31 @@
 package data;
 
-import data.Position;
-import instruction.Instruction;
-
-public class Grid {
+public class Grid
+{
+    public static final int ZERO_COORDINATE = 0;
     private final int upperXCoordinate;
     private final int upperYCoordinate;
 
-    public Grid(int upperXCoordinate, int upperYCoordinate) {
-
+    public Grid(int upperXCoordinate, int upperYCoordinate)
+    {
         this.upperXCoordinate = upperXCoordinate;
         this.upperYCoordinate = upperYCoordinate;
     }
 
-    public Position calculateNextPosition(int currentXCoordinate, int currentYCoordinate, Instruction instruction) {
-        return null;
+    public boolean isPositionOnGrid(Position position)
+    {
+        int x = position.getX();
+        int y = position.getY();
+
+        if (x > upperXCoordinate || y > upperYCoordinate)
+        {
+            return false;
+        } else if (x < ZERO_COORDINATE || y < ZERO_COORDINATE)
+        {
+            return false;
+        } else
+        {
+            return true;
+        }
     }
 }
