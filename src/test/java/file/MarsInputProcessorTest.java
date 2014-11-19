@@ -39,7 +39,7 @@ public class MarsInputProcessorTest
                 .withRobotAndInstructions(robot, instructions).build();
         String process = new MarsInputProcessor().process(marsInput);
 
-        Assert.assertThat(process, Matchers.is(String.format("%d %d %s", x + 1, y, EAST)));
+        Assert.assertThat(process, Matchers.is(String.format(MarsInputProcessor.RESULT_FORMAT, x + 1, y, EAST)));
     }
 
     @Test
@@ -51,6 +51,6 @@ public class MarsInputProcessorTest
                 .withRobotAndInstructions(robot, instructions).build();
 
         String process = new MarsInputProcessor().process(marsInput);
-        Assert.assertThat(process, Matchers.is(String.format("%d %d %s LOST", UPPER_X_COORDINATE, UPPER_Y_COORDINATE, EAST)));
+        Assert.assertThat(process, Matchers.is(String.format(MarsInputProcessor.RESULT_LOST_FORMAT, UPPER_X_COORDINATE, UPPER_Y_COORDINATE, EAST)));
     }
 }

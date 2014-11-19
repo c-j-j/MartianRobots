@@ -41,14 +41,15 @@ public class Robot
         {
             previousPosition = currentPosition;
             instruction.execute(this);
-            updateRobotLostStatus(grid);
+            updateRobotLostStatus(grid, instruction);
         }
     }
 
-    private void updateRobotLostStatus(Grid grid)
+    private void updateRobotLostStatus(Grid grid, Instruction instruction)
     {
         if (isRobotLost(grid))
         {
+            grid.registerLostMove(previousPosition, currentOrientation, instruction);
             isLost = true;
         }
     }

@@ -53,7 +53,7 @@ public class RobotTest
     }
 
     @Test
-    public void robotShouldBeLostIfItHasFallenOffTheGrid() throws Exception
+    public void robotShouldBeLostIfItHasFallenOffTheGridAndRegisterLostMoveWithGrid() throws Exception
     {
         Position initialPosition = new Position(UPPER_X_COORDINATE, UPPER_Y_COORDINATE);
         Robot robot = new Robot(initialPosition, Orientation.N);
@@ -61,6 +61,8 @@ public class RobotTest
 
         robot.executeInstructions(grid, instructions);
         Assert.assertThat(robot.isLost(), Matchers.is(true));
+
+        Assert.assertThat(grid.getLostMoves(), Matchers.hasSize(1));
     }
 
     @Test

@@ -7,6 +7,9 @@ import robot.RobotAction;
 
 public class MarsInputProcessor
 {
+    public static final String RESULT_FORMAT = "%d %d %s\n";
+    public static final String RESULT_LOST_FORMAT = "%d %d %s LOST\n";
+
     public String process(MarsInput marsInput)
     {
         Grid grid = new Grid(marsInput.getUpperXCoordinate(), marsInput.getUpperYCoordinate());
@@ -19,11 +22,11 @@ public class MarsInputProcessor
             if (!robot.isLost())
             {
                 Position finalPosition = robot.getCurrentPosition();
-                resultBuilder.append(String.format("%d %d %s", finalPosition.getX(), finalPosition.getY(), robot.getCurrentOrientation()));
+                resultBuilder.append(String.format(RESULT_FORMAT, finalPosition.getX(), finalPosition.getY(), robot.getCurrentOrientation()));
             } else
             {
                 Position lastKnownPosition = robot.getPreviousPosition();
-                resultBuilder.append(String.format("%d %d %s LOST", lastKnownPosition.getX(), lastKnownPosition.getY(), robot.getCurrentOrientation()));
+                resultBuilder.append(String.format(RESULT_LOST_FORMAT, lastKnownPosition.getX(), lastKnownPosition.getY(), robot.getCurrentOrientation()));
             }
         }
         return resultBuilder.toString();
