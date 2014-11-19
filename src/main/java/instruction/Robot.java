@@ -10,6 +10,7 @@ public class Robot
 {
     private Orientation currentOrientation;
     private Position currentPosition;
+    private boolean isLost = false;
 
     public Robot(Position initialPosition, Orientation initialOrientation)
     {
@@ -21,14 +22,24 @@ public class Robot
     {
         for (Instruction instruction : instructions)
         {
-            if(!isRobotLost(grid)){
+            if (isLost)
+            {
+                break;
+            } else
+            {
                 instruction.execute(this);
+                updateRobotLostStatus(grid);
             }
-            //check if robot is lost, i.e. grid.isRobotLost(this)
             //check if previous robot has left "scent", i.e. grid has a record of robot being lsot
             //grid.isInstructionGoingToLoseRobot(this)
-            //execute command
+        }
+    }
 
+    private void updateRobotLostStatus(Grid grid)
+    {
+        if (isRobotLost(grid))
+        {
+            isLost = true;
         }
     }
 
@@ -55,5 +66,10 @@ public class Robot
     public void updatePosition(Position newPosition)
     {
         currentPosition = newPosition;
+    }
+
+    public boolean isLost()
+    {
+        return isLost;
     }
 }
