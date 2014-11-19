@@ -19,16 +19,21 @@ public class MarsInputProcessor
         {
             Robot robot = robotAction.getRobot();
             robot.executeInstructions(grid, robotAction.getInstructions());
-            if (!robot.isLost())
-            {
-                Position finalPosition = robot.getCurrentPosition();
-                resultBuilder.append(String.format(RESULT_FORMAT, finalPosition.getX(), finalPosition.getY(), robot.getCurrentOrientation()));
-            } else
-            {
-                Position lastKnownPosition = robot.getPreviousPosition();
-                resultBuilder.append(String.format(RESULT_LOST_FORMAT, lastKnownPosition.getX(), lastKnownPosition.getY(), robot.getCurrentOrientation()));
-            }
+            generateResults(resultBuilder, robot);
         }
         return resultBuilder.toString();
+    }
+
+    private void generateResults(StringBuilder resultBuilder, Robot robot)
+    {
+        if (!robot.isLost())
+        {
+            Position finalPosition = robot.getCurrentPosition();
+            resultBuilder.append(String.format(RESULT_FORMAT, finalPosition.getX(), finalPosition.getY(), robot.getCurrentOrientation()));
+        } else
+        {
+            Position lastKnownPosition = robot.getPreviousPosition();
+            resultBuilder.append(String.format(RESULT_LOST_FORMAT, lastKnownPosition.getX(), lastKnownPosition.getY(), robot.getCurrentOrientation()));
+        }
     }
 }
