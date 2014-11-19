@@ -36,7 +36,7 @@ public class MarsInputFileReader
             Robot robot = assembleRobot(robotDetailsLine);
             List<Instruction> instructions = assembleInstructions(robotInstructions[index + 1]);
 
-            marsInputBuilder.withRobotAndInstruction(robot, instructions);
+            marsInputBuilder.withRobotAndInstructions(robot, instructions);
         }
     }
 

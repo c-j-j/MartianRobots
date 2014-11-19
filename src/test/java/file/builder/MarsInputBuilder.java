@@ -26,7 +26,7 @@ public class MarsInputBuilder
         return this;
     }
 
-    public MarsInputBuilder withRobotAndInstruction(Robot robot, List<Instruction> instructions)
+    public MarsInputBuilder withRobotAndInstructions(Robot robot, List<Instruction> instructions)
     {
         robotActions.add(new RobotAction(robot, instructions));
         return this;
