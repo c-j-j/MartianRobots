@@ -1,6 +1,7 @@
 package file;
 
 import data.Position;
+import instruction.Instruction;
 import instruction.Orientation;
 import org.apache.commons.io.FileUtils;
 import org.hamcrest.Matchers;
@@ -34,7 +35,7 @@ public class MarsInputFileReaderTest
     }
 
     @Test
-    public void shouldReadRobotDetailsWithInstructions() throws Exception
+    public void shouldReadRobotDefinition() throws Exception
     {
         MarsInput input = new MarsInputFileReader().read(file);
         List<RobotAction> robotActions = input.getRobotActions();
@@ -44,5 +45,30 @@ public class MarsInputFileReaderTest
         Robot robot = robotAction.getRobot();
         Assert.assertThat(robot.getCurrentPosition(), Matchers.is(new Position(1, 1)));
         Assert.assertThat(robot.getCurrentOrientation(), Matchers.is(Orientation.E));
+    }
+
+    @Test
+    public void shouldReadInstructions() throws Exception
+    {
+        MarsInput input = new MarsInputFileReader().read(file);
+        List<RobotAction> robotActions = input.getRobotActions();
+        RobotAction robotAction = robotActions.get(0);
+
+        List<Instruction> instructions = robotAction.getInstructions();
+
+        Assert.assertThat(instructions, Matchers.hasSize(3));
+        Assert.assertThat(instructions.get(0), Matchers.is(Instruction.R));
+        Assert.assertThat(instructions.get(1), Matchers.is(Instruction.F));
+        Assert.assertThat(instructions.get(2), Matchers.is(Instruction.L));
+    }
+
+    @Test
+    public void shouldReadMultipleRobotInstructions() throws Exception
+    {
+        File multipleRobotFile = file;
+        FileUtils.copyInputStreamToFile(getClass().getResourceAsStream("Input-WithMultipleRobots.txt"), multipleRobotFile);
+        MarsInput input = new MarsInputFileReader().read(file);
+
+        Assert.assertThat(input.getRobotActions(), Matchers.hasSize(2));
     }
 }

@@ -1,6 +1,7 @@
 package file.builder;
 
 import file.MarsInput;
+import instruction.Instruction;
 import robot.Robot;
 import robot.RobotAction;
 
@@ -25,9 +26,9 @@ public class MarsInputBuilder
         return this;
     }
 
-    public MarsInputBuilder withRobotAndInstruction(Robot robot)
+    public MarsInputBuilder withRobotAndInstruction(Robot robot, List<Instruction> instructions)
     {
-        robotActions.add(new RobotAction(robot));
+        robotActions.add(new RobotAction(robot, instructions));
         return this;
     }
 
