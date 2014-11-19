@@ -61,5 +61,20 @@ public class RobotTest
         robot.executeInstructions(grid, instructions);
         Assert.assertThat(robot.isLost(), Matchers.is(true));
     }
+
+    @Test
+    public void robotShouldNotLoseItselfIfPreviousRobotHasLostItselfOnAParticularPosition() throws Exception
+    {
+        Position position = new Position(UPPER_X_COORDINATE, UPPER_Y_COORDINATE);
+        Orientation orientation = Orientation.NORTH;
+        grid.registerLostMove(position, orientation, FORWARD_INSTRUCTION);
+        Robot robot = new Robot(position, orientation);
+
+        instructions.add(FORWARD_INSTRUCTION);
+
+        robot.executeInstructions(grid, instructions);
+
+        Assert.assertThat(robot.isLost(), Matchers.is(false));
+    }
 }
 

@@ -27,11 +27,17 @@ public class Robot
                 break;
             } else
             {
-                instruction.execute(this);
-                updateRobotLostStatus(grid);
+                processInstruction(grid, instruction);
             }
-            //check if previous robot has left "scent", i.e. grid has a record of robot being lsot
-            //grid.isInstructionGoingToLoseRobot(this)
+        }
+    }
+
+    private void processInstruction(Grid grid, InstructionSet instruction)
+    {
+        if (!grid.willNextMoveLoseRobot(currentPosition, currentOrientation, instruction))
+        {
+            instruction.execute(this);
+            updateRobotLostStatus(grid);
         }
     }
 

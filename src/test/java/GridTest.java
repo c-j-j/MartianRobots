@@ -7,6 +7,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 public class GridTest
 {
 
@@ -63,6 +65,40 @@ public class GridTest
     @Test
     public void shouldRegisterAPositionAndInstructionThatWillPreventNextRobotBeingLost() throws Exception
     {
-        grid.registerLostMove(new Position(UPPER_X_COORDINATE,UPPER_Y_COORDINATE), Orientation.NORTH, InstructionSet.FORWARD);
+        Position lastKnownPosition = new Position(UPPER_X_COORDINATE, UPPER_Y_COORDINATE);
+        InstructionSet forward = InstructionSet.FORWARD;
+        Orientation north = Orientation.NORTH;
+        grid.registerLostMove(lastKnownPosition, north, forward);
+        List<Grid.LostMove> lostMoves = grid.getLostMoves();
+
+        Assert.assertThat(lostMoves, Matchers.hasSize(1));
+
+        Grid.LostMove lostMove = lostMoves.get(0);
+        Assert.assertThat(lostMove.getPosition(), Matchers.is(lastKnownPosition));
+        Assert.assertThat(lostMove.getInstruction(), Matchers.is(forward));
+        Assert.assertThat(lostMove.getOrientation(), Matchers.is(north));
+    }
+
+    @Test
+    public void shouldReturnTrueWhenNextMoveHasLostAPreviousRobot() throws Exception
+    {
+        Position lastKnownPosition = new Position(UPPER_X_COORDINATE, UPPER_Y_COORDINATE);
+        InstructionSet forward = InstructionSet.FORWARD;
+        Orientation north = Orientation.NORTH;
+        grid.registerLostMove(lastKnownPosition, north, forward);
+
+        Assert.assertThat(grid.willNextMoveLoseRobot(lastKnownPosition, north, forward), Matchers.is(true));
+    }
+
+    @Test
+    public void shouldReturnFalseWhenNextMoveHasNotLostAPreviousRobot() throws Exception
+    {
+        Position lastKnownPosition = new Position(UPPER_X_COORDINATE, UPPER_Y_COORDINATE);
+        InstructionSet forward = InstructionSet.FORWARD;
+        Orientation north = Orientation.NORTH;
+        grid.registerLostMove(lastKnownPosition, north, forward);
+
+        int x = UPPER_X_COORDINATE - 1;
+        Assert.assertThat(grid.willNextMoveLoseRobot(new Position(x, UPPER_Y_COORDINATE), north, forward), Matchers.is(false));
     }
 }
